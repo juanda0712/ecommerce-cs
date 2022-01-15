@@ -30,7 +30,7 @@ const classes = {
     minHeight: '80vh',
   },
   footer: {
-    marginTop: 1,
+    marginTop: 5,
     textAlign: 'center',
   },
   section: {
@@ -89,13 +89,6 @@ const classes = {
   },
 
   menuButton: { padding: 0 },
-
-  // review
-  reviewItem: {
-    marginRight: '1rem',
-    borderRight: '1px #808080 solid',
-    paddingRight: '1rem',
-  },
 };
 
 export default classes;

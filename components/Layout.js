@@ -212,7 +212,10 @@ export default function Layout({ title, description, children }) {
             {/*BOTTON APPBAR */}
             <AppBar position="fixed" sx={classes.appbar_m}>
               <Toolbar>
-                <StyledFab aria-label="add">
+                <StyledFab
+                  aria-label="add"
+                  onClick={(e) => navbarClickHandler(e, '/ordenar')}
+                >
                   <AddIcon />
                 </StyledFab>
               </Toolbar>
