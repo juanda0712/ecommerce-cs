@@ -223,7 +223,7 @@ export default function Layout({ title, description, children }) {
           </AppBar>
         )}
 
-        <Container component="main" sx={classes.main}>
+        <Container component="main" maxWidth="xl" sx={classes.main}>
           {children}
         </Container>
 

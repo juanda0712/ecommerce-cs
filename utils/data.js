@@ -18,7 +18,7 @@ const data = {
     {
       name: '4 piezas de pollo',
       slug: 'promocion-4-piezas',
-      category: 'pollo',
+      category: 'papas',
       image: '/images/promociones.jpg',
       isFeatured: false,
       featuredImage: '',
@@ -31,7 +31,7 @@ const data = {
     {
       name: '6 piezas de pollo',
       slug: 'promocion-6-piezas',
-      category: 'pollo',
+      category: 'papas',
       image: '/images/promociones.jpg',
       isFeatured: false,
       featuredImage: '',
@@ -44,7 +44,7 @@ const data = {
     {
       name: '8 piezas de pollo',
       slug: 'promocion-8-piezas',
-      category: 'pollo',
+      category: 'papas',
       image: '/images/promociones.jpg',
       isFeatured: false,
       featuredImage: '',
@@ -70,7 +70,7 @@ const data = {
     {
       name: 'banners 1',
       slug: 'banners-1',
-      category: 'banner',
+      category: 'pollo',
       image: '/images/banner1.jpg',
       isFeatured: true,
       featuredImage: '/images/banner1.jpg',
@@ -83,7 +83,7 @@ const data = {
     {
       name: 'banners 2',
       slug: 'banners-2',
-      category: 'banner',
+      category: 'pollo',
       image: '/images/banner2.jpg',
       isFeatured: true,
       featuredImage: '/images/banner2.jpg',
@@ -92,6 +92,18 @@ const data = {
       isPromotion: false,
       isCombo: false,
       isAvailable: true,
+    },
+  ],
+  categories: [
+    {
+      name: 'Pollo',
+      identifier: 'pollo',
+      image: '/images/categoriaPollo.jpg',
+    },
+    {
+      name: 'Papas',
+      identifier: 'papas',
+      image: '/images/categoriaPapas.jpg',
     },
   ],
 };

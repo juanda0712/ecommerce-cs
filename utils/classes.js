@@ -89,6 +89,21 @@ const classes = {
   },
 
   menuButton: { padding: 0 },
+  menuTitles: {
+    fontSize: '1.5rem',
+    textAlign: 'center',
+    color: '#ff5733',
+    marginTop: '1.5rem',
+    marginBottom: '1.5rem',
+  },
+  productsMenu: {
+    fontSize: '2rem',
+    textAlign: 'center',
+    color: '#ff5733',
+    marginTop: '1rem',
+    marginBottom: '1rem',
+  },
+  cardMenu: { flex: '1 0 auto' },
 };
 
 export default classes;
