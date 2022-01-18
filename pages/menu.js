@@ -1,6 +1,5 @@
 import NextLink from 'next/link';
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import {
   Grid,
   Typography,
@@ -85,7 +84,7 @@ export default function Menu(props) {
                       </CardContent>
                       <CardContent>
                         <Typography sx={classes.productsMenu}>
-                          {product.price}
+                          &#162;{product.price}
                         </Typography>
                       </CardContent>
                     </Box>

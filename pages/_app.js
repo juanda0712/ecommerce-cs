@@ -1,4 +1,5 @@
 import { CacheProvider } from '@emotion/react';
+import { SnackbarProvider } from 'notistack';
 import { StoreProvider } from '../utils/Store';
 import createEmotionCache from '../utils/createEmotionCache';
 
@@ -9,9 +10,13 @@ function MyApp(props) {
 
   return (
     <CacheProvider value={emotionCache}>
-      <StoreProvider>
-        <Component {...pageProps} />
-      </StoreProvider>
+      <SnackbarProvider
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <StoreProvider>
+          <Component {...pageProps} />
+        </StoreProvider>
+      </SnackbarProvider>
     </CacheProvider>
   );
 }

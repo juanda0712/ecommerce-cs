@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import axios from 'axios';
 import { Grid, Typography, Link } from '@mui/material';
+import { useSnackbar } from 'notistack';
 
 import Layout from '../components/Layout';
 import classes from '../utils/classes';
@@ -18,6 +19,7 @@ export default function Home(props) {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { featuredProducts, promotionProducts } = props;
+  const { enqueueSnackbar } = useSnackbar();
 
   //FUNCTIONS
   const addToShoppingHandler = async (product) => {
@@ -28,8 +30,9 @@ export default function Home(props) {
     //return the product from the DB
     const { data } = await axios.get(`/api/products/${product._id}`);
     if (!data.isAvailable) {
-      //CREAR ESTA ALERTA CON NOTISTACK
-      window.alert('Lo sentimos. El producto está agotado');
+      enqueueSnackbar('Lo sentimos. El producto está agotado', {
+        variant: 'error',
+      });
       return;
     }
     dispatch({

@@ -104,6 +104,32 @@ const classes = {
     marginBottom: '1rem',
   },
   cardMenu: { flex: '1 0 auto' },
+
+  productGroupButtons: {
+    borderRadius: 35,
+    color: '#ff5733',
+    marginLeft: '0.5rem',
+    marginRight: '0.5rem',
+    borderColor: '#ff5733',
+    '&:hover': {
+      borderColor: '#ff5733',
+    },
+    '&.Mui-disabled': {
+      color: '#ff5733',
+    },
+  },
+  buttonCheckout: {
+    borderRadius: 35,
+    backgroundColor: '#ff5733',
+    color: '#ffffff',
+    '&:hover': {
+      color: '#ffffff',
+      backgroundColor: '#ff5733',
+    },
+  },
+  shoppingFont: {
+    fontSize: '1rem',
+  },
 };
 
 export default classes;

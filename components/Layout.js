@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -25,6 +24,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import classes from '../utils/classes';
 import theme from '../utils/theme';
 import StyledFab from '../utils/styledFab';
+import Image from 'next/image';
 
 export default function Layout({ title, description, children }) {
   const isDesktop = useMediaQuery('(min-width:600px)');
@@ -69,12 +69,12 @@ export default function Layout({ title, description, children }) {
               <Box>
                 <NextLink href="/" passHref>
                   <Link>
-                    <img
-                      src="images/nueva.png"
+                    <Image
+                      src="/images/nueva.png"
                       alt="El Cruce del Sabor"
-                      width="75"
-                      height="75"
-                    ></img>
+                      width={75}
+                      height={75}
+                    ></Image>
                   </Link>
                 </NextLink>
               </Box>
@@ -189,12 +189,12 @@ export default function Layout({ title, description, children }) {
               <Box>
                 <NextLink href="/" passHref>
                   <Link>
-                    <img
-                      src="images/nueva.png"
+                    <Image
+                      src="/images/nueva.png"
                       alt="El Cruce del Sabor"
-                      width="75"
-                      height="75"
-                    ></img>
+                      width={75}
+                      height={75}
+                    ></Image>
                   </Link>
                 </NextLink>
               </Box>
