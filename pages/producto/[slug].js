@@ -68,29 +68,30 @@ export default function ProductScreen(props) {
   return (
     <Layout title={product.name}>
       <Grid container spacing={1}>
-        <Grid item md={5} xs={12}>
+        <Grid item md={6} xs={12}>
           <Box display="flex" justifyContent="center" alignItems="center">
             <Image
               src={product.image}
               alt={product.name}
               responsive
-              width={500}
-              height={500}
+              width={600}
+              height={600}
             ></Image>
           </Box>
         </Grid>
-        <Grid item md={4} xs={12}>
-          <Box justifyContent="center" alignItems="center">
+        <Grid item md={6} xs={12}>
+          <Box
+            justifyContent="center"
+            alignItems="center"
+            m={6}
+            pt={7}
+            sx={{ height: '10%' }}
+          >
             <Typography component="h1" variant="h1" sx={classes.productsMenu}>
               {product.name}
             </Typography>
           </Box>
-          <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            minHeight="10vh"
-          >
+          <Box display="flex" justifyContent="center" alignItems="center">
             <Typography component="h2" variant="h2" sx={classes.menuTitles}>
               Cantidad:
             </Typography>
@@ -118,33 +119,33 @@ export default function ProductScreen(props) {
               </Box>
             </ButtonGroup>
           </Box>
-        </Grid>
-        <Grid item md={3} xs={12}>
-          <Card>
-            <List>
-              <ListItem>
-                <Grid container>
-                  <Grid item xs={6}>
-                    <Typography sx={classes.shoppingFont}>Precio</Typography>
+          <Box m={3} pt={4}>
+            <Card sx={{ mx: 'auto', width: '50%' }}>
+              <List>
+                <ListItem>
+                  <Grid container>
+                    <Grid item xs={6}>
+                      <Typography sx={classes.shoppingFont}>Precio</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Typography sx={classes.shoppingFont} align="right">
+                        &#162;{product.price * productQuantity}
+                      </Typography>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={6}>
-                    <Typography sx={classes.shoppingFont} align="right">
-                      &#162;{product.price * productQuantity}
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </ListItem>
-              <ListItem>
-                <Button
-                  fullWidth
-                  onClick={addToShoppingHandler}
-                  sx={classes.buttonCheckout}
-                >
-                  Agregar a la compra
-                </Button>
-              </ListItem>
-            </List>
-          </Card>
+                </ListItem>
+                <ListItem>
+                  <Button
+                    fullWidth
+                    onClick={addToShoppingHandler}
+                    sx={classes.buttonCheckout}
+                  >
+                    Agregar a la compra
+                  </Button>
+                </ListItem>
+              </List>
+            </Card>
+          </Box>
         </Grid>
       </Grid>
     </Layout>

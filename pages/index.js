@@ -54,7 +54,7 @@ export default function Home(props) {
         {featuredProducts.map((product) => (
           <NextLink
             key={product._id}
-            href={`/product/${product.slug}`}
+            href={`/producto/${product.slug}`}
             passHref
           >
             <Link sx={classes.flex}>

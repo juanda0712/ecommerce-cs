@@ -92,14 +92,14 @@ const classes = {
   menuTitles: {
     fontSize: '1.5rem',
     textAlign: 'center',
-    color: '#ff5733',
+    color: '#000000',
     marginTop: '1.5rem',
     marginBottom: '1.5rem',
   },
   productsMenu: {
     fontSize: '2rem',
     textAlign: 'center',
-    color: '#ff5733',
+    color: '#000000',
     marginTop: '1rem',
     marginBottom: '1rem',
   },
@@ -129,6 +129,20 @@ const classes = {
   },
   shoppingFont: {
     fontSize: '1rem',
+    color: '#000000',
+  },
+
+  //compras styles
+
+  tableHead: {
+    fontSize: '1.3rem',
+    textAlign: 'center',
+    color: '#000000',
+  },
+  tableBody: {
+    fontSize: '1rem',
+    textAlign: 'center',
+    color: '#000000',
   },
 };
 

@@ -13,7 +13,7 @@ import NextLink from 'next/link';
 export default function ProductItem({ product, addToShoppingHandler }) {
   return (
     <Card>
-      <NextLink href={`/product/${product.slug}`} passHref>
+      <NextLink href={`/producto/${product.slug}`} passHref>
         <CardActionArea>
           <CardMedia
             component="img"

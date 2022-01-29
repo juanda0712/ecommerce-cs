@@ -64,7 +64,7 @@ export default function Menu(props) {
             .filter((product) => product.category === category)
             .map((product) => (
               <Card key={product.name}>
-                <NextLink href={`/product/${product.slug}`} passHref>
+                <NextLink href={`/producto/${product.slug}`} passHref>
                   <CardActionArea sx={{ display: 'flex' }}>
                     <CardMedia
                       sx={{

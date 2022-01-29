@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import {
   AppBar,
+  Badge,
   Box,
   Button,
   Container,
@@ -20,16 +21,20 @@ import {
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import AddIcon from '@mui/icons-material/Add';
+import Image from 'next/image';
 import useMediaQuery from '@mui/material/useMediaQuery';
+
 import classes from '../utils/classes';
 import theme from '../utils/theme';
 import StyledFab from '../utils/styledFab';
-import Image from 'next/image';
+import { Store } from '../utils/Store';
 
 export default function Layout({ title, description, children }) {
   const isDesktop = useMediaQuery('(min-width:600px)');
   const router = useRouter();
   const [anchorEl, setAnchorEl] = useState(null);
+  const { state } = useContext(Store);
+  const { shopping } = state;
 
   //Functions
   const navbarClickHandler = (e, redirect) => {
@@ -93,7 +98,7 @@ export default function Layout({ title, description, children }) {
                   Combos
                 </Button>
                 <Button
-                  onClick={(e) => navbarClickHandler(e, '/ordenar')}
+                  onClick={(e) => navbarClickHandler(e, '/menu')}
                   sx={classes.brand}
                 >
                   Ordene Aqu&iacute;
@@ -119,7 +124,16 @@ export default function Layout({ title, description, children }) {
                   onClick={(e) => userMenuClickHandler(e, '/compras')}
                   sx={classes.infoButton}
                 >
-                  <ShoppingBagIcon />
+                  {shopping.shoppingProducts.length > 0 ? (
+                    <Badge
+                      color="secondary"
+                      badgeContent={shopping.shoppingProducts.length}
+                    >
+                      <ShoppingBagIcon />
+                    </Badge>
+                  ) : (
+                    <ShoppingBagIcon />
+                  )}
                 </IconButton>
                 <IconButton
                   size="large"
