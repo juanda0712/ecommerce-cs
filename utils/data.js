@@ -14,6 +14,63 @@ const data = {
       isAdmin: false,
     },
   ],
+  zones: [
+    {
+      zone: 'Alto Quebradilla',
+      district: 'quebradilla',
+      price: 100,
+    },
+    {
+      zone: 'Centro Quebradilla',
+      district: 'quebradilla',
+      price: 100,
+    },
+    {
+      zone: 'La rueda Quebradilla',
+      district: 'quebradilla',
+      price: 100,
+    },
+    {
+      zone: 'Condominios Quebradilla',
+      district: 'quebradilla',
+      price: 100,
+    },
+    {
+      zone: 'Colegio Quebradilla',
+      district: 'quebradilla',
+      price: 100,
+    },
+    {
+      zone: 'Papera Tablon',
+      district: 'tablon',
+      price: 100,
+    },
+    {
+      zone: 'La plaza Tablon',
+      district: 'tablon',
+      price: 100,
+    },
+    {
+      zone: 'Iglesia Tobosi',
+      district: 'tobosi',
+      price: 100,
+    },
+    {
+      zone: 'Entrada Tobosi-Quebradilla',
+      district: 'tobosi',
+      price: 100,
+    },
+    {
+      zone: 'Entrada Tobosi-Barrancas',
+      district: 'tobosi',
+      price: 100,
+    },
+    {
+      zone: 'Barrio la cruz',
+      district: 'tobosi',
+      price: 100,
+    },
+  ],
   products: [
     {
       name: '4 piezas de pollo',

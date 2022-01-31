@@ -23,9 +23,9 @@ import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import AddIcon from '@mui/icons-material/Add';
 import Image from 'next/image';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { createTheme } from '@mui/material/styles';
 
 import classes from '../utils/classes';
-import theme from '../utils/theme';
 import StyledFab from '../utils/styledFab';
 import { Store } from '../utils/Store';
 
@@ -36,6 +36,36 @@ export default function Layout({ title, description, children }) {
   const { state } = useContext(Store);
   const { shopping } = state;
 
+  const theme = createTheme({
+    components: {
+      MuiLink: {
+        defaultProps: {
+          underline: 'hover',
+        },
+      },
+    },
+
+    typography: {
+      h1: {
+        fontSize: '1.6rem',
+        fontWeight: 400,
+        margin: '1rem 0',
+      },
+      h2: {
+        fontSize: '1.4rem',
+        fontWeight: 400,
+        margin: '1rem 0',
+      },
+    },
+    palette: {
+      primary: {
+        main: '#ff5733',
+      },
+      secondary: {
+        main: '#f9d047',
+      },
+    },
+  });
   //Functions
   const navbarClickHandler = (e, redirect) => {
     if (redirect) {

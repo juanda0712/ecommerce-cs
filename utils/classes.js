@@ -24,13 +24,21 @@ const classes = {
     maxWidth: 800,
     margin: '0 auto',
   },
+  searchButton: {
+    backgroundColor: '#f8c040',
+    padding: 1,
+    borderRadius: '0 5px 5px 0',
+    '& span': {
+      color: '#000000',
+    },
+  },
   //layout
   main: {
     marginTop: 2,
     minHeight: '80vh',
   },
   footer: {
-    marginTop: 5,
+    marginTop: 1,
     textAlign: 'center',
   },
   section: {
@@ -143,6 +151,64 @@ const classes = {
     fontSize: '1rem',
     textAlign: 'center',
     color: '#000000',
+  },
+
+  //Popop
+  menuPopop: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 500,
+    bgcolor: 'background.paper',
+    border: '10px solid #ff5733',
+    borderRadius: 8,
+    boxShadow: 24,
+    p: 4,
+    backgroundColor: '#000000',
+    '&:hover': {
+      backgroundColor: '#000000',
+    },
+  },
+  closePopop: {
+    cursor: 'pointer',
+    position: 'absolute',
+    display: 'block',
+    right: '-20px',
+    top: '-20px',
+    fontSize: '1.3rem',
+    background: '#ffffff',
+    borderRadius: '50%',
+    border: '0.1rem solid #ff5733',
+    color: '#ff5733',
+    '&:hover': {
+      color: '#ff5733',
+      backgroundColor: '#ffffff',
+    },
+  },
+  modalFont: {
+    fontSize: '1.3rem',
+    textAlign: 'center',
+    color: '#ffffff',
+    marginTop: '0.8rem',
+    marginBottom: '0.8rem',
+  },
+  modalFont2: {
+    fontSize: '1.3rem',
+    textAlign: 'center',
+    color: '#ff5733',
+    marginTop: '0.8rem',
+    marginBottom: '0.8rem',
+  },
+  modalCard: {
+    flex: '1 0 auto',
+  },
+  modalCardAction: {
+    display: 'flex',
+  },
+  modalCardMedia: {
+    width: 80,
+    paddingLeft: '1rem',
   },
 };
 

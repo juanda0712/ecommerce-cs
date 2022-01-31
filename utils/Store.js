@@ -14,6 +14,9 @@ const initialState = {
     paymentMethod: Cookies.get('paymentMethod')
       ? Cookies.get('paymentMethod')
       : '',
+    deliveryMethod: Cookies.get('deliveryMethod')
+      ? Cookies.get('deliveryMethod')
+      : '',
   },
   userInfo: Cookies.get('userInfo')
     ? JSON.parse(Cookies.get('userInfo'))
@@ -58,6 +61,11 @@ function reducer(state, action) {
         ...state,
         shopping: { ...state.shopping, paymentMethod: action.payload },
       };
+    case 'SAVE_DELIVERY_METHOD':
+      return {
+        ...state,
+        shopping: { ...state.shopping, deliveryMethod: action.payload },
+      };
     case 'SHOPPING_CLEAR':
       return {
         ...state,
@@ -73,6 +81,7 @@ function reducer(state, action) {
           shoppingProducts: [],
           shippingAddress: '',
           paymentMethod: '',
+          deliveryMethod: '',
         },
       };
 
