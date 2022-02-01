@@ -44,6 +44,7 @@ export default function Informacion(props) {
   const [open, setOpen] = useState(false);
   const [district, setDistrict] = useState('');
   const [zone, setZone] = useState('');
+  const [textHelper, setTextHelper] = useState(false);
 
   useEffect(() => {
     if (!deliveryMethod) {
@@ -56,7 +57,9 @@ export default function Informacion(props) {
       setValue('fullName', shippingAddress.fullName);
       setValue('phoneNumber', shippingAddress.phoneNumber);
       setValue('address', shippingAddress.address);
-      setValue('expressAddress', shippingAddress.expressAddress);
+      setValue('expressAddress', shippingAddress.district);
+      setDistrict(shippingAddress.district || '');
+      setZone(shippingAddress.zone || '');
     }
   }, []);
 
@@ -74,18 +77,13 @@ export default function Informacion(props) {
         phoneNumber,
       })
     );
-    router.push('/payment');
+    router.push('/pago');
   };
 
-  const submitExpressHandler = ({
-    fullName,
-    address,
-    phoneNumber,
-    expressAddress,
-  }) => {
+  const submitExpressHandler = ({ fullName, address, phoneNumber }) => {
     dispatch({
       type: 'SAVE_SHIPPING_ADDRESS',
-      payload: { fullName, address, phoneNumber, expressAddress },
+      payload: { fullName, address, phoneNumber, district, zone },
     });
     Cookies.set(
       'shippingAddress',
@@ -93,10 +91,11 @@ export default function Informacion(props) {
         fullName,
         address,
         phoneNumber,
-        expressAddress,
+        district,
+        zone,
       })
     );
-    router.push('/payment');
+    router.push('/pago');
   };
 
   const clickOpenHandler = () => {
@@ -127,7 +126,7 @@ export default function Informacion(props) {
         }
       >
         <Typography component="h1" variant="h1">
-          Shipping Address
+          Información de envío
         </Typography>
         <List>
           <ListItem>
@@ -189,13 +188,27 @@ export default function Informacion(props) {
           {deliveryMethod === 'express' ? (
             <>
               <ListItem>
-                <Link onClick={clickOpenHandler}>Seleccionar Ubicacion</Link>
+                <Link onClick={clickOpenHandler}>
+                  <Typography>Seleccionar Ubicación</Typography>
+                </Link>
+                {textHelper ? (
+                  <Typography
+                    sx={{
+                      marginLeft: '1rem',
+                      fontSize: '0.75rem',
+                      color: '#FF0000',
+                    }}
+                  >
+                    *requerida
+                  </Typography>
+                ) : (
+                  ''
+                )}
               </ListItem>
               <ListItem>
                 <Controller
-                  name="addressZone"
+                  name="expressAddress"
                   control={control}
-                  defaultValue=""
                   rules={{
                     required: true,
                   }}
@@ -204,10 +217,18 @@ export default function Informacion(props) {
                       disableEscapeKeyDown
                       open={open}
                       onClose={closeHandler}
-                      id="addressZone"
+                      id="expressAddress"
+                      error={Boolean(errors.expressAddress)}
+                      helperText={
+                        errors.expressAddress
+                          ? setTextHelper(true)
+                          : setTextHelper(false)
+                      }
                       {...field}
                     >
-                      <DialogTitle>Completa el formulario</DialogTitle>
+                      <DialogTitle align="center">
+                        Ubicacion Aproximada
+                      </DialogTitle>
                       <DialogContent>
                         <Box
                           component="form"
@@ -280,7 +301,7 @@ export default function Informacion(props) {
                       variant="outlined"
                       fullWidth
                       id="address"
-                      label="Dirección"
+                      label="Dirección Exacta"
                       error={Boolean(errors.address)}
                       helperText={
                         errors.address

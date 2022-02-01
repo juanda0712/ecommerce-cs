@@ -165,7 +165,7 @@ function ComprasScreen() {
                       fullWidth
                       sx={classes.buttonCheckout}
                     >
-                      Pagar
+                      Realizar pedido
                     </Button>
                   </ListItem>
                 </List>
