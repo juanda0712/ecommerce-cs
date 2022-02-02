@@ -28,13 +28,15 @@ import { createTheme } from '@mui/material/styles';
 import classes from '../utils/classes';
 import StyledFab from '../utils/styledFab';
 import { Store } from '../utils/Store';
+import Cookies from 'js-cookie';
 
 export default function Layout({ title, description, children }) {
   const isDesktop = useMediaQuery('(min-width:600px)');
   const router = useRouter();
   const [anchorEl, setAnchorEl] = useState(null);
-  const { state } = useContext(Store);
-  const { shopping } = state;
+  const [anchorEl_login, setAnchorEl_login] = useState(null);
+  const { state, dispatch } = useContext(Store);
+  const { shopping, userInfo } = state;
 
   const theme = createTheme({
     components: {
@@ -83,6 +85,28 @@ export default function Layout({ title, description, children }) {
   };
   const closeHandler = () => {
     setAnchorEl(null);
+  };
+  const userLoginHandler = (e) => {
+    setAnchorEl_login(e.currentTarget);
+  };
+  const userLoginClickHandler = (e, redirect) => {
+    setAnchorEl_login(null);
+    if (redirect) {
+      router.push(redirect);
+    }
+  };
+  const closeLoginHandler = () => {
+    setAnchorEl_login(null);
+  };
+  const logoutClickHandler = () => {
+    setAnchorEl_login(null);
+    dispatch({ type: 'USER_LOGOUT' });
+    Cookies.remove('userInfo');
+    Cookies.remove('shoppingProducts');
+    Cookies.remove('shippinhAddress');
+    Cookies.remove('paymentMethod');
+    Cookies.remove('deliveryMethod');
+    router.push('/');
   };
 
   return (
@@ -165,34 +189,71 @@ export default function Layout({ title, description, children }) {
                     <ShoppingBagIcon />
                   )}
                 </IconButton>
-                <IconButton
-                  size="large"
-                  aria-label="Cuenta del usuario"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={userMenuHandler}
-                  sx={classes.infoButton}
-                >
-                  <AccountCircleIcon />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={Boolean(anchorEl)}
-                  onClose={closeHandler}
-                >
-                  <MenuItem onClick={(e) => userMenuClickHandler(e, '/perfil')}>
-                    Perfil
-                  </MenuItem>
-                  <MenuItem
-                    onClick={(e) =>
-                      userMenuClickHandler(e, '/historial-compra')
-                    }
-                  >
-                    Historial Compra
-                  </MenuItem>
-                </Menu>
+                {userInfo ? (
+                  <>
+                    <IconButton
+                      size="large"
+                      aria-label="Cuenta del usuario"
+                      aria-controls="menu-appbar"
+                      aria-haspopup="true"
+                      onClick={userMenuHandler}
+                      sx={classes.infoButton}
+                    >
+                      <AccountCircleIcon />
+                    </IconButton>
+                    <Menu
+                      id="menu-appbar"
+                      anchorEl={anchorEl}
+                      keepMounted
+                      open={Boolean(anchorEl)}
+                      onClose={closeHandler}
+                    >
+                      <MenuItem
+                        onClick={(e) => userMenuClickHandler(e, '/perfil')}
+                      >
+                        Perfil
+                      </MenuItem>
+                      {userInfo.isAdmin && (
+                        <MenuItem
+                          onClick={(e) =>
+                            userMenuClickHandler(e, '/administracion/panel')
+                          }
+                        >
+                          Panel de Administracion
+                        </MenuItem>
+                      )}
+                      <MenuItem onClick={logoutClickHandler}>
+                        Cerrar Sesion
+                      </MenuItem>
+                    </Menu>
+                  </>
+                ) : (
+                  <>
+                    <IconButton
+                      size="large"
+                      aria-label="Administracion"
+                      aria-controls="menu-appbar"
+                      aria-haspopup="true"
+                      onClick={userLoginHandler}
+                      sx={classes.infoButton}
+                    >
+                      <AccountCircleIcon />
+                    </IconButton>
+                    <Menu
+                      id="menu-appbar"
+                      anchorEl={anchorEl_login}
+                      keepMounted
+                      open={Boolean(anchorEl_login)}
+                      onClose={closeLoginHandler}
+                    >
+                      <MenuItem
+                        onClick={(e) => userLoginClickHandler(e, '/acceso')}
+                      >
+                        Iniciar Sesion
+                      </MenuItem>
+                    </Menu>
+                  </>
+                )}
               </Box>
             </Toolbar>
           </AppBar>
