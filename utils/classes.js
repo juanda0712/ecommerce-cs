@@ -135,6 +135,16 @@ const classes = {
       backgroundColor: '#ff5733',
     },
   },
+  buttonSINPE: {
+    borderRadius: 35,
+    marginLeft: 'auto',
+    backgroundColor: '#ff5733',
+    color: '#ffffff',
+    '&:hover': {
+      color: '#ffffff',
+      backgroundColor: '#ff5733',
+    },
+  },
   shoppingFont: {
     fontSize: '1rem',
     color: '#000000',
@@ -197,6 +207,26 @@ const classes = {
     fontSize: '1.3rem',
     textAlign: 'center',
     color: '#ff5733',
+    marginTop: '0.8rem',
+    marginBottom: '0.8rem',
+  },
+  modalFont3: {
+    fontSize: '2rem',
+    textAlign: 'center',
+    color: '#ffffff',
+    marginTop: '0.8rem',
+    marginBottom: '0.8rem',
+  },
+  modalFont4: {
+    fontSize: '1.5rem',
+    color: '#000',
+    textAlign: 'center',
+    marginTop: '0.8rem',
+    marginBottom: '0.8rem',
+  },
+  modalFont5: {
+    fontSize: '1.1rem',
+    color: '#000',
     marginTop: '0.8rem',
     marginBottom: '0.8rem',
   },

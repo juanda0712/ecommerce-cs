@@ -64,8 +64,8 @@ export default function Pago() {
                 onChange={(e) => setPaymentMethod(e.target.value)}
               >
                 <FormControlLabel
-                  label="Tarjeta"
-                  value="Tarjeta"
+                  label="Tarjeta de Credito/Debito"
+                  value="Tarjeta de Credito/Debito"
                   control={<Radio />}
                 ></FormControlLabel>
                 <FormControlLabel
