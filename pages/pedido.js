@@ -199,7 +199,6 @@ function Pedido(props) {
                               </Link>
                             </NextLink>
                           </TableCell>
-
                           <TableCell>
                             <NextLink href={`/producto/${item.slug}`} passHref>
                               <Link>
@@ -282,6 +281,7 @@ function Pedido(props) {
                   variant="contained"
                   color="primary"
                   fullWidth
+                  sx={{ borderRadius: 35 }}
                 >
                   Realizar Pedido
                 </Button>

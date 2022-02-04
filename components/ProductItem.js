@@ -1,16 +1,15 @@
 import {
-  Button,
   Card,
   CardActionArea,
-  CardActions,
   CardContent,
   CardMedia,
+  Grid,
   Typography,
 } from '@mui/material';
 import React from 'react';
 import NextLink from 'next/link';
 
-export default function ProductItem({ product, addToShoppingHandler }) {
+export default function ProductItem({ product }) {
   return (
     <Card>
       <NextLink href={`/producto/${product.slug}`} passHref>
@@ -21,20 +20,30 @@ export default function ProductItem({ product, addToShoppingHandler }) {
             title={product.name}
           ></CardMedia>
           <CardContent>
-            <Typography>{product.name}</Typography>
+            <Grid container spacing={4}>
+              <Grid item md={4} xs={3}>
+                <Typography sx={{ textAlign: 'left', fontSize: '1.4rem' }}>
+                  {product.name}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: '2.5rem',
+                    textAlign: 'left',
+                    color: '#ff5733',
+                  }}
+                >
+                  &#162;{product.price}
+                </Typography>
+              </Grid>
+              <Grid item md={8} xs={9}>
+                <Typography sx={{ textAlign: 'left', fontSize: '1rem' }}>
+                  Descripcion: {product.description}
+                </Typography>
+              </Grid>
+            </Grid>
           </CardContent>
         </CardActionArea>
       </NextLink>
-      <CardActions>
-        <Typography>&#162;{product.price}</Typography>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => addToShoppingHandler(product)}
-        >
-          Agregar a la compra
-        </Button>
-      </CardActions>
     </Card>
   );
 }

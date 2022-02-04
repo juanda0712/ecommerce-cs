@@ -10,7 +10,6 @@ import {
   DialogTitle,
   FormControl,
   InputLabel,
-  Link,
   List,
   ListItem,
   MenuItem,
@@ -25,9 +24,9 @@ import CheckoutWizard from '../components/CheckoutWizard';
 import Layout from '../components/Layout';
 import Form from '../components/Form';
 import { Store } from '../utils/Store';
-import classes from '../utils/classes';
 import Zone from '../models/Zone';
 import db from '../utils/db';
+import classes from '../utils/classes';
 
 export default function Informacion(props) {
   const { state, dispatch } = useContext(Store);
@@ -188,9 +187,9 @@ export default function Informacion(props) {
           {deliveryMethod === 'express' ? (
             <>
               <ListItem>
-                <Link onClick={clickOpenHandler}>
-                  <Typography>Seleccionar Ubicación</Typography>
-                </Link>
+                <Typography onClick={clickOpenHandler} sx={classes.cursor}>
+                  Seleccionar Ubicación
+                </Typography>
                 {textHelper ? (
                   <Typography
                     sx={{
@@ -320,7 +319,13 @@ export default function Informacion(props) {
             <></>
           )}
           <ListItem>
-            <Button type="submit" sx={classes.buttonCheckout} fullWidth>
+            <Button
+              fullWidth
+              type="submit"
+              sx={{ borderRadius: 35 }}
+              variant="contained"
+              color="primary"
+            >
               Continue
             </Button>
           </ListItem>

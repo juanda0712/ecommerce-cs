@@ -58,10 +58,11 @@ function CategoryEdit({ params }) {
   const { userInfo } = state;
   const router = useRouter();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-  const [{ loading, error, loadingUpdate }, dispatch] = useReducer(reducer, {
-    loading: true,
-    error: '',
-  });
+  const [{ loading, error, loadingUpdate, loadingUpload }, dispatch] =
+    useReducer(reducer, {
+      loading: true,
+      error: '',
+    });
   const {
     handleSubmit,
     control,
@@ -84,6 +85,7 @@ function CategoryEdit({ params }) {
           );
           setValue('name', data.name);
           setValue('identifier', data.identifier);
+          setValue('image', data.image);
           dispatch({ type: 'FETCH_SUCCESS' });
         } catch (err) {
           dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
@@ -93,7 +95,31 @@ function CategoryEdit({ params }) {
     }
   }, []);
 
-  const submitHandler = async ({ name, identifier }) => {
+  //FUNCTIONS
+  const uploadHandler = async (e, imageField = 'image') => {
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append('file', file);
+    try {
+      dispatch({ type: 'UPLOAD_REQUEST' });
+      const { data } = await axios.post('/api/admin/upload', bodyFormData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      dispatch({ type: 'UPLOAD_SUCCESS' });
+      setValue(imageField, data.secure_url);
+      enqueueSnackbar('Archivo actualizado correctamente', {
+        variant: 'success',
+      });
+    } catch (err) {
+      dispatch({ type: 'UPLOAD_FAIL', payload: getError(err) });
+      enqueueSnackbar(getError(err), { variant: 'error' });
+    }
+  };
+
+  const submitHandler = async ({ name, identifier, image }) => {
     closeSnackbar();
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
@@ -102,6 +128,7 @@ function CategoryEdit({ params }) {
         {
           name,
           identifier,
+          image,
         },
         { headers: { authorization: `Bearer ${userInfo.token}` } }
       );
@@ -216,6 +243,36 @@ function CategoryEdit({ params }) {
                           ></TextField>
                         )}
                       ></Controller>
+                    </ListItem>
+                    <ListItem>
+                      <Controller
+                        name="image"
+                        control={control}
+                        defaultValue=""
+                        rules={{
+                          required: true,
+                        }}
+                        render={({ field }) => (
+                          <TextField
+                            variant="outlined"
+                            fullWidth
+                            id="image"
+                            label="Imagen"
+                            error={Boolean(errors.image)}
+                            helperText={
+                              errors.image ? 'La imagen es requerida' : ''
+                            }
+                            {...field}
+                          ></TextField>
+                        )}
+                      ></Controller>
+                    </ListItem>
+                    <ListItem>
+                      <Button variant="contained" component="label">
+                        Cargar imagen
+                        <input type="file" onChange={uploadHandler} hidden />
+                      </Button>
+                      {loadingUpload && <CircularProgress />}
                     </ListItem>
                     <ListItem>
                       <Button

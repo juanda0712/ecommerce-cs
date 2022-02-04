@@ -19,6 +19,7 @@ handler.put(async (req, res) => {
   if (category) {
     category.name = req.body.name;
     category.identifier = req.body.identifier;
+    category.image = req.body.image;
     await category.save();
     await db.disconnect();
     res.send({ message: 'Category Updated Successfully' });

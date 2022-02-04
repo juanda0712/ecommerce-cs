@@ -17,6 +17,7 @@ import { Store } from '../utils/Store';
 import CheckoutWizard from '../components/CheckoutWizard';
 import Layout from '../components/Layout';
 import Form from '../components/Form';
+import classes from '../utils/classes';
 
 export default function Pago() {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -99,7 +100,7 @@ export default function Pago() {
               variant="contained"
               color="secondary"
               onClick={() => router.push('/informacion')}
-              sx={{ borderRadius: 35 }}
+              sx={classes.buttonBack}
             >
               Atrás
             </Button>

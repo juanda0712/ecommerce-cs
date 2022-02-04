@@ -4,6 +4,8 @@ import {
   Button,
   ButtonGroup,
   Card,
+  CardContent,
+  CardMedia,
   Grid,
   List,
   ListItem,
@@ -69,7 +71,15 @@ export default function ProductScreen(props) {
     <Layout title={product.name}>
       <Grid container spacing={1}>
         <Grid item md={6} xs={12}>
-          <Box display="flex" justifyContent="center" alignItems="center">
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            sx={{
+              border: '8px solid #ff5733',
+              borderRadius: 8,
+            }}
+          >
             <Image
               src={product.image}
               alt={product.name}
@@ -80,71 +90,88 @@ export default function ProductScreen(props) {
           </Box>
         </Grid>
         <Grid item md={6} xs={12}>
-          <Box
-            justifyContent="center"
-            alignItems="center"
-            m={6}
-            pt={7}
-            sx={{ height: '10%' }}
-          >
-            <Typography component="h1" variant="h1" sx={classes.productsMenu}>
-              {product.name}
-            </Typography>
-          </Box>
-          <Box display="flex" justifyContent="center" alignItems="center">
-            <Typography component="h2" variant="h2" sx={classes.menuTitles}>
-              Cantidad:
-            </Typography>
-            <ButtonGroup variant="outlined">
-              <Box>
-                <Button
-                  sx={classes.productGroupButtons}
-                  onClick={decProductQuantityHandler}
+          <Box sx={classes.menuPopop2}>
+            <Card sx={{ display: 'flex' }}>
+              <CardMedia
+                sx={{ width: 85 }}
+                component="img"
+                image={product.image}
+                alt={product.name}
+              />
+              <CardContent>
+                <Typography
+                  component="h1"
+                  variant="h1"
+                  sx={classes.productsMenu}
                 >
-                  <RemoveIcon />
-                </Button>
-              </Box>
-              <Button disabled sx={classes.productGroupButtons}>
-                <Typography sx={classes.shoppingFont}>
-                  {productQuantity}
+                  {product.name}
                 </Typography>
-              </Button>
-              <Box>
-                <Button
-                  sx={classes.productGroupButtons}
-                  onClick={incProductQuantityHandler}
-                >
-                  <AddIcon />
-                </Button>
-              </Box>
-            </ButtonGroup>
-          </Box>
-          <Box m={3} pt={4}>
-            <Card sx={{ mx: 'auto', width: '50%' }}>
-              <List>
-                <ListItem>
-                  <Grid container>
-                    <Grid item xs={6}>
-                      <Typography sx={classes.shoppingFont}>Precio</Typography>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Typography sx={classes.shoppingFont} align="right">
-                        &#162;{product.price * productQuantity}
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </ListItem>
-                <ListItem>
-                  <Button
-                    fullWidth
-                    onClick={addToShoppingHandler}
-                    sx={classes.buttonCheckout}
-                  >
-                    Agregar a la compra
-                  </Button>
-                </ListItem>
-              </List>
+              </CardContent>
             </Card>
+            <Box>
+              <Typography sx={classes.productBoxTitles}>Descripción</Typography>
+              <Typography sx={{ fontSize: '1.1rem', marginTop: '0.5rem' }}>
+                *{product.description}
+              </Typography>
+            </Box>
+            <Box justifyContent="center" alignItems="center">
+              <Typography sx={classes.productBoxTitles}>Cantidad</Typography>
+              <ButtonGroup sx={{ marginTop: '0.5rem', marginLeft: '7rem' }}>
+                <Box>
+                  <Button
+                    sx={classes.productGroupButtons}
+                    onClick={decProductQuantityHandler}
+                  >
+                    <RemoveIcon />
+                  </Button>
+                </Box>
+                <Button disabled sx={classes.productGroupButtons}>
+                  <Typography sx={classes.shoppingFont}>
+                    {productQuantity}
+                  </Typography>
+                </Button>
+                <Box>
+                  <Button
+                    sx={classes.productGroupButtons}
+                    onClick={incProductQuantityHandler}
+                  >
+                    <AddIcon />
+                  </Button>
+                </Box>
+              </ButtonGroup>
+            </Box>
+            <Box m={3} pt={4}>
+              <Card>
+                <List>
+                  <ListItem>
+                    <Grid container>
+                      <Grid item xs={6}>
+                        <Typography sx={classes.shoppingFont}>
+                          Precio
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Typography sx={classes.shoppingFont} align="right">
+                          &#162;{product.price * productQuantity}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </ListItem>
+                  <ListItem>
+                    <Button
+                      onClick={addToShoppingHandler}
+                      fullWidth
+                      type="submit"
+                      sx={{ borderRadius: 35 }}
+                      variant="contained"
+                      color="primary"
+                    >
+                      Agregar a la compra
+                    </Button>
+                  </ListItem>
+                </List>
+              </Card>
+            </Box>
           </Box>
         </Grid>
       </Grid>

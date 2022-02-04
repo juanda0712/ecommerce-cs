@@ -163,7 +163,9 @@ function ComprasScreen() {
                     <Button
                       onClick={checkoutHandler}
                       fullWidth
-                      sx={classes.buttonCheckout}
+                      sx={{ borderRadius: 35 }}
+                      variant="contained"
+                      color="primary"
                     >
                       Realizar pedido
                     </Button>

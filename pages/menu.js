@@ -31,9 +31,14 @@ export default function Menu(props) {
     <Layout title="Menu">
       <Grid container spacing={2}>
         <Grid item md={6}>
-          <Typography sx={classes.menuTitles}>MEN&Uacute;</Typography>
+          <Card sx={{ marginLeft: '2.5rem' }}>
+            <CardContent>
+              <Typography sx={classes.menuTitles}>MEN&Uacute;</Typography>
+            </CardContent>
+          </Card>
           {categories.map((category) => (
             <Card
+              sx={{ marginLeft: '2.5rem' }}
               key={category.identifier}
               onClick={(e) =>
                 selectCategoryHandler(e, category.identifier, category.name)
@@ -47,47 +52,60 @@ export default function Menu(props) {
                   alt={category.name}
                 />
                 <CardContent sx={classes.cardMenu}>
-                  <Typography sx={classes.menuTitles}>
+                  <Typography sx={classes.menuCategories}>
                     {category.name}
                   </Typography>
                 </CardContent>
                 <IconButton>
-                  <ArrowForwardIosIcon></ArrowForwardIosIcon>
+                  <ArrowForwardIosIcon
+                    sx={{ color: '#ff5733' }}
+                  ></ArrowForwardIosIcon>
                 </IconButton>
               </CardActionArea>
             </Card>
           ))}
         </Grid>
         <Grid item md={6}>
-          <Typography sx={classes.menuTitles}>{categoryTitle}</Typography>
+          <Card sx={{ marginRight: '2.5rem' }}>
+            <CardContent>
+              <Typography sx={classes.menuTitles}>
+                {categoryTitle.toUpperCase()}
+              </Typography>
+            </CardContent>
+          </Card>
           {availableProducts
             .filter((product) => product.category === category)
             .map((product) => (
-              <Card key={product.name}>
+              <Card key={product.name} sx={{ marginRight: '2.5rem' }}>
                 <NextLink href={`/producto/${product.slug}`} passHref>
                   <CardActionArea sx={{ display: 'flex' }}>
-                    <CardMedia
-                      sx={{
-                        width: 300,
-                        marginBottom: '1rem',
-                        flex: '1 0 auto',
-                      }}
-                      component="img"
-                      image={product.image}
-                      title={product.name}
-                    ></CardMedia>
-                    <Box>
-                      <CardContent>
-                        <Typography sx={classes.productsMenu}>
-                          {product.name}
-                        </Typography>
-                      </CardContent>
-                      <CardContent>
-                        <Typography sx={classes.productsMenu}>
-                          &#162;{product.price}
-                        </Typography>
-                      </CardContent>
-                    </Box>
+                    <Grid container>
+                      <Grid item md={7}>
+                        <CardMedia
+                          sx={{
+                            marginBottom: '1rem',
+                            flex: '1 0 auto',
+                          }}
+                          component="img"
+                          image={product.image}
+                          title={product.name}
+                        ></CardMedia>
+                      </Grid>
+                      <Grid item md={5}>
+                        <Box>
+                          <CardContent>
+                            <Typography sx={classes.productsMenu}>
+                              {product.name}
+                            </Typography>
+                          </CardContent>
+                          <CardContent>
+                            <Typography sx={classes.productsMenu1}>
+                              &#162;{product.price}
+                            </Typography>
+                          </CardContent>
+                        </Box>
+                      </Grid>
+                    </Grid>
                   </CardActionArea>
                 </NextLink>
               </Card>

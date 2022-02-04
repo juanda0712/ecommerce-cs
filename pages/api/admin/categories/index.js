@@ -18,7 +18,7 @@ handler.post(async (req, res) => {
   const newCategory = new Category({
     name: 'nombre de la categoria',
     identifier: 'identificador',
-    image: 'images/nombreImagen',
+    image: 'cargar imagen',
   });
 
   const category = await newCategory.save();

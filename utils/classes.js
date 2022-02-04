@@ -100,18 +100,42 @@ const classes = {
   menuTitles: {
     fontSize: '1.5rem',
     textAlign: 'center',
-    color: '#000000',
+    color: '#ff5733',
     marginTop: '1.5rem',
+  },
+  menuCategories: {
+    fontSize: '1.5rem',
+    textAlign: 'left',
+    color: '#000000',
+    marginLeft: '6rem',
+    marginTop: '1rem',
     marginBottom: '1.5rem',
+    '&:hover:not(.Mui-disabled)': {
+      color: '#b03c23',
+    },
   },
   productsMenu: {
-    fontSize: '2rem',
+    fontSize: '1.4rem',
     textAlign: 'center',
     color: '#000000',
     marginTop: '1rem',
     marginBottom: '1rem',
   },
-  cardMenu: { flex: '1 0 auto' },
+  productsMenu1: {
+    fontSize: '2rem',
+    textAlign: 'center',
+    color: '#ff5733',
+    marginTop: '1rem',
+    marginBottom: '1rem',
+  },
+  productBoxTitles: {
+    textAlign: 'center',
+    fontSize: '1.5rem',
+    marginTop: '1.5rem',
+  },
+  cardMenu: {
+    flex: '1 0 auto',
+  },
 
   productGroupButtons: {
     borderRadius: 35,
@@ -143,6 +167,16 @@ const classes = {
     '&:hover': {
       color: '#ffffff',
       backgroundColor: '#ff5733',
+    },
+  },
+  buttonBack: {
+    borderRadius: 35,
+    marginLeft: 'auto',
+    backgroundColor: '#FAF9F8',
+    color: '#000',
+    '&:hover': {
+      color: '#000',
+      backgroundColor: '#d9d9d9',
     },
   },
   shoppingFont: {
@@ -179,6 +213,15 @@ const classes = {
     '&:hover': {
       backgroundColor: '#000000',
     },
+  },
+  menuPopop2: {
+    width: 500,
+    bgcolor: 'background.paper',
+    border: '8px solid #ff5733',
+    marginLeft: '6rem',
+    marginTop: '1.5rem',
+    borderRadius: 8,
+    p: 4,
   },
   closePopop: {
     cursor: 'pointer',
@@ -239,6 +282,13 @@ const classes = {
   modalCardMedia: {
     width: 80,
     paddingLeft: '1rem',
+  },
+  cursor: {
+    color: '#ff5733',
+    '&:hover:not(.Mui-disabled)': {
+      cursor: 'pointer',
+      color: '#b03c23',
+    },
   },
 };
 
