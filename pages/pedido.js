@@ -115,6 +115,7 @@ function Pedido(props) {
         openSINPE={openSINPE}
         closeSINPEModalHandler={closeSINPEModalHandler}
         SINPEHandler={SINPEHandler}
+        totalPrice={totalPrice}
       />
       <Typography component="h1" variant="h1">
         Resumen del Pedido
@@ -282,7 +283,7 @@ function Pedido(props) {
                   color="primary"
                   fullWidth
                 >
-                  Place Order
+                  Realizar Pedido
                 </Button>
               </ListItem>
               {loading && (

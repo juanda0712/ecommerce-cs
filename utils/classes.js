@@ -69,7 +69,7 @@ const classes = {
   brand: {
     color: '#ffffff',
     fontWeight: 'bold',
-    fontSize: '1.5rem',
+    fontSize: '1.6rem',
   },
   grow: {
     flexGrow: 1,
@@ -77,7 +77,7 @@ const classes = {
   navbarButton: {
     color: '#ffffff',
     textTransform: 'initial',
-    fontSize: '1rem',
+    fontSize: '1.2rem',
     marginLeft: '1.7rem',
     marginRight: '1.7rem',
   },

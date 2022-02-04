@@ -14,6 +14,7 @@ export default function InfoSINPE({
   openSINPE = false,
   closeSINPEModalHandler,
   SINPEHandler,
+  totalPrice,
 }) {
   return (
     <Modal open={openSINPE} onClose={closeSINPEModalHandler}>
@@ -31,6 +32,9 @@ export default function InfoSINPE({
             </Typography>
             <Typography sx={classes.modalFont5}>
               * Recuerde tener el comprobante para verificar el pago
+            </Typography>
+            <Typography sx={classes.modalFont4}>
+              Total a pagar: &#162;{totalPrice}
             </Typography>
           </CardContent>
           <CardActions>
