@@ -12,8 +12,9 @@ handler.post(async (req, res) => {
   const newOrder = new Order({
     ...req.body,
   });
-  const order = await newOrder.save();
-  res.status(201).send(order);
+  await newOrder.save();
+  await db.disconnect();
+  res.status(201).send({ message: 'Order created succesfully' });
 });
 
 export default handler;

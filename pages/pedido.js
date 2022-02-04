@@ -72,7 +72,7 @@ function Pedido(props) {
     closeSnackbar();
     try {
       setLoading(true);
-      const { data } = await axios.post('/api/orders', {
+      await axios.post('/api/orders', {
         orderProducts: shoppingProducts,
         shippingAddress,
         paymentMethod,
