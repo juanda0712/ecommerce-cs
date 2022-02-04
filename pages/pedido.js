@@ -131,13 +131,17 @@ function Pedido(props) {
               </ListItem>
               {deliveryMethod === 'carry_out' ? (
                 <ListItem>
-                  {shippingAddress.fullName}, {shippingAddress.phoneNumber}
+                  <Typography sx={classes.orderFonts}>
+                    {shippingAddress.fullName}, {shippingAddress.phoneNumber}
+                  </Typography>
                 </ListItem>
               ) : (
                 <ListItem>
-                  {shippingAddress.fullName}, {shippingAddress.address},{' '}
-                  {shippingAddress.phoneNumber}, {shippingAddress.district},{' '}
-                  {shippingAddress.zone}
+                  <Typography sx={classes.orderFonts}>
+                    {shippingAddress.fullName}, {shippingAddress.address},{' '}
+                    {shippingAddress.phoneNumber}, {shippingAddress.district},{' '}
+                    {shippingAddress.zone}
+                  </Typography>
                 </ListItem>
               )}
             </List>
@@ -149,7 +153,7 @@ function Pedido(props) {
                   Método de Pago
                 </Typography>
               </ListItem>
-              <ListItem>{paymentMethod}</ListItem>
+              <ListItem sx={classes.orderFonts}>{paymentMethod}</ListItem>
             </List>
           </Card>
           <Card sx={classes.section}>
@@ -160,9 +164,9 @@ function Pedido(props) {
                 </Typography>
               </ListItem>
               {deliveryMethod === 'express' ? (
-                <ListItem>Express</ListItem>
+                <ListItem sx={classes.orderFonts}>Express</ListItem>
               ) : (
-                <ListItem>Para Llevar</ListItem>
+                <ListItem sx={classes.orderFonts}>Para Llevar</ListItem>
               )}
             </List>
           </Card>
@@ -260,12 +264,12 @@ function Pedido(props) {
               <ListItem>
                 <Grid container>
                   <Grid item xs={6}>
-                    <Typography>
+                    <Typography sx={classes.orderFonts}>
                       <strong>Total:</strong>
                     </Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <Typography align="right">
+                    <Typography align="right" sx={classes.orderFonts}>
                       <strong>&#162;{totalPrice}</strong>
                     </Typography>
                   </Grid>
@@ -284,6 +288,18 @@ function Pedido(props) {
                   sx={{ borderRadius: 35 }}
                 >
                   Realizar Pedido
+                </Button>
+              </ListItem>
+              <ListItem>
+                <Button
+                  fullWidth
+                  type="button"
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => router.push('/menu')}
+                  sx={classes.buttonBack}
+                >
+                  Seguir comprando
                 </Button>
               </ListItem>
               {loading && (

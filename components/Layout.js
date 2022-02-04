@@ -29,12 +29,14 @@ import classes from '../utils/classes';
 import StyledFab from '../utils/styledFab';
 import { Store } from '../utils/Store';
 import Cookies from 'js-cookie';
+import SINPELayout from './popop/SINPELayout';
 
 export default function Layout({ title, description, children }) {
   const isDesktop = useMediaQuery('(min-width:600px)');
   const router = useRouter();
   const [anchorEl, setAnchorEl] = useState(null);
   const [anchorEl_login, setAnchorEl_login] = useState(null);
+  const [openSINPE, setOpenSINPE] = useState(false);
   const { state, dispatch } = useContext(Store);
   const { shopping, userInfo } = state;
 
@@ -120,7 +122,10 @@ export default function Layout({ title, description, children }) {
 
       <ThemeProvider theme={theme}>
         <CssBaseline />
-
+        <SINPELayout
+          openSINPE={openSINPE}
+          closeSINPEModalHandler={() => setOpenSINPE(false)}
+        />
         {isDesktop ? (
           <AppBar position="sticky" sx={classes.appbar}>
             <Toolbar sx={classes.toolbar}>
@@ -172,6 +177,14 @@ export default function Layout({ title, description, children }) {
               </Box>
               {/* PROFILE */}
               <Box>
+                <Button
+                  aria-controls="simple-menu"
+                  aria-haspopup="true"
+                  onClick={() => setOpenSINPE(true)}
+                  sx={classes.navbarButton}
+                >
+                  SINPE
+                </Button>
                 <IconButton
                   size="large"
                   aria-label="Muestra las compras"

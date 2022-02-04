@@ -36,6 +36,7 @@ const classes = {
   main: {
     marginTop: 2,
     minHeight: '80vh',
+    backgroundColor: '#F6F6F6',
   },
   footer: {
     marginTop: 1,
@@ -262,7 +263,7 @@ const classes = {
   },
   modalFont4: {
     fontSize: '1.5rem',
-    color: '#000',
+    color: '#ff5733',
     textAlign: 'center',
     marginTop: '0.8rem',
     marginBottom: '0.8rem',
@@ -289,6 +290,9 @@ const classes = {
       cursor: 'pointer',
       color: '#b03c23',
     },
+  },
+  orderFonts: {
+    color: '#ff5733',
   },
 };
 

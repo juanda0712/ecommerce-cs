@@ -170,6 +170,18 @@ function ComprasScreen() {
                       Realizar pedido
                     </Button>
                   </ListItem>
+                  <ListItem>
+                    <Button
+                      fullWidth
+                      type="button"
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => router.push('/menu')}
+                      sx={classes.buttonBack}
+                    >
+                      Seguir comprando
+                    </Button>
+                  </ListItem>
                 </List>
               </Card>
             </Grid>

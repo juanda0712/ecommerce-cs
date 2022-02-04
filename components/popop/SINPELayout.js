@@ -2,7 +2,6 @@ import {
   Box,
   Button,
   Card,
-  CardActions,
   CardContent,
   Modal,
   Typography,
@@ -10,15 +9,16 @@ import {
 import React from 'react';
 import classes from '../../utils/classes';
 
-export default function InfoSINPE({
+export default function SINPELayout({
   openSINPE = false,
   closeSINPEModalHandler,
-  SINPEHandler,
-  totalPrice = 0,
 }) {
   return (
     <Modal open={openSINPE} onClose={closeSINPEModalHandler}>
       <Box sx={classes.menuPopop}>
+        <Button onClick={closeSINPEModalHandler} sx={classes.closePopop}>
+          &times;
+        </Button>
         <Card>
           <CardContent>
             <Typography sx={classes.modalFont4}>Datos SINPE Móvil</Typography>
@@ -33,18 +33,7 @@ export default function InfoSINPE({
             <Typography sx={classes.modalFont5}>
               * Recuerde tener el comprobante para verificar el pago
             </Typography>
-            <Typography sx={classes.modalFont4}>
-              Total a pagar: &#162;{totalPrice}
-            </Typography>
           </CardContent>
-          <CardActions>
-            <Button sx={classes.buttonSINPE} onClick={closeSINPEModalHandler}>
-              Cancel
-            </Button>
-            <Button sx={classes.buttonSINPE} onClick={SINPEHandler}>
-              Listo
-            </Button>
-          </CardActions>
         </Card>
       </Box>
     </Modal>
