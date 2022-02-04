@@ -26,7 +26,7 @@ export default function ProductItem({ product, addToShoppingHandler }) {
         </CardActionArea>
       </NextLink>
       <CardActions>
-        <Typography>${product.price}</Typography>
+        <Typography>&#162;{product.price}</Typography>
         <Button
           size="small"
           color="primary"
