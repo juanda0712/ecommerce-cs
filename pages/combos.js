@@ -6,7 +6,7 @@ import Product from '../models/Product';
 import db from '../utils/db';
 import ProductItem from '../components/ProductItem';
 
-export default function Home(props) {
+export default function Combos(props) {
   const { comboProducts } = props;
 
   return (
@@ -14,9 +14,9 @@ export default function Home(props) {
       <Typography variant="h1" align="center">
         Combos
       </Typography>
-      <Grid container spacing={4}>
+      <Grid container spacing={3}>
         {comboProducts.map((product) => (
-          <Grid item md={6} key={product.name}>
+          <Grid item md={4} key={product.name}>
             <ProductItem product={product} />
           </Grid>
         ))}
