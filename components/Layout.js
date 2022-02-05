@@ -143,7 +143,7 @@ export default function Layout({ title, description, children }) {
                 </NextLink>
               </Box>
               {/*NAVBAR */}
-              <Box sx={{ marginLeft: '10.5rem' }}>
+              <Box sx={{ marginLeft: '11rem' }}>
                 <Button
                   onClick={(e) => navbarClickHandler(e, '/menu')}
                   sx={classes.navbarButton}
