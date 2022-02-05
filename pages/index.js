@@ -40,7 +40,7 @@ export default function Home(props) {
       </Typography>
       <Grid container spacing={4}>
         {promotionProducts.map((product) => (
-          <Grid item md={6} key={product.name}>
+          <Grid item md={4} key={product.name}>
             <ProductItem product={product} />
           </Grid>
         ))}
