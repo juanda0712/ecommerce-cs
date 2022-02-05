@@ -118,6 +118,10 @@ export default function Layout({ title, description, children }) {
           {title ? `${title} - El Cruce del Sabor` : 'El Cruce del Sabor'}
         </title>
         {description && <meta name="description" content={description}></meta>}
+        <meta
+          name="google-site-verification"
+          content="yVeBy7trwy4nXLeF3iBeMdmUwbux3W9trUdKgGKBPVc"
+        />
       </Head>
 
       <ThemeProvider theme={theme}>
