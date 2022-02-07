@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   Box,
   Button,
@@ -23,11 +23,14 @@ import {
   CardActionArea,
   CardMedia,
   CardContent,
+  TextField,
 } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import Cookies from 'js-cookie';
 import { useSnackbar } from 'notistack';
+import { Controller, useForm } from 'react-hook-form';
 
+import Form from '../components/Form';
 import { Store } from '../utils/Store';
 import Layout from '../components/Layout';
 import classes from '../utils/classes';
@@ -38,17 +41,34 @@ function ComprasScreen() {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const { state, dispatch } = useContext(Store);
   const [open, setOpen] = useState(false);
-  const {
-    shopping: { shoppingProducts },
-  } = state;
+  const { shopping } = state;
+  const { shoppingProducts, orderComment } = shopping;
+
+  const { handleSubmit, control, setValue } = useForm();
+
+  useEffect(() => {
+    if (!shoppingProducts) {
+      router.push('/menu');
+    }
+    setValue('comment', orderComment.comment);
+  }, []);
 
   //FUNCTIONS
   const removeItemHandler = (item) => {
     dispatch({ type: 'SHOPPING_REMOVE_ITEM', payload: item });
   };
 
-  const checkoutHandler = () => {
-    setOpen(true);
+  const checkoutHandler = ({ comment }) => {
+    try {
+      dispatch({
+        type: 'SAVE_ORDER_COMMENT',
+        payload: { comment },
+      });
+      Cookies.set('orderComment', JSON.stringify({ comment }));
+      setOpen(true);
+    } catch (error) {
+      enqueueSnackbar(getError(error), { variant: 'error' });
+    }
   };
 
   const deliveryHandler = (e, method) => {
@@ -146,23 +166,33 @@ function ComprasScreen() {
               </TableContainer>
             </Grid>
             <Grid item md={3} xs={12}>
-              <Card>
+              <Form onSubmit={handleSubmit(checkoutHandler)}>
                 <List>
                   <ListItem>
-                    <Typography variant="h2">
-                      Subtotal (
-                      {shoppingProducts.reduce((a, c) => a + c.quantity, 0)}{' '}
-                      productos) : &#162;
-                      {shoppingProducts.reduce(
-                        (a, c) => a + c.quantity * c.price,
-                        0
-                      )}
-                    </Typography>
+                    <Card>
+                      <List>
+                        <ListItem>
+                          <Typography variant="h2">
+                            Subtotal (
+                            {shoppingProducts.reduce(
+                              (a, c) => a + c.quantity,
+                              0
+                            )}{' '}
+                            productos) : &#162;
+                            {shoppingProducts.reduce(
+                              (a, c) => a + c.quantity * c.price,
+                              0
+                            )}
+                          </Typography>
+                        </ListItem>
+                      </List>
+                    </Card>
                   </ListItem>
                   <ListItem>
                     <Button
                       onClick={checkoutHandler}
                       fullWidth
+                      type="submit"
                       sx={{ borderRadius: 35 }}
                       variant="contained"
                       color="primary"
@@ -182,8 +212,26 @@ function ComprasScreen() {
                       Seguir comprando
                     </Button>
                   </ListItem>
+                  <ListItem>
+                    <Controller
+                      name="comment"
+                      control={control}
+                      defaultValue=""
+                      render={({ field }) => (
+                        <TextField
+                          variant="outlined"
+                          multiline
+                          placeholder="Placeholder"
+                          fullWidth
+                          id="comment"
+                          label="Comentarios"
+                          {...field}
+                        ></TextField>
+                      )}
+                    ></Controller>
+                  </ListItem>
                 </List>
-              </Card>
+              </Form>
             </Grid>
           </Grid>
           <Modal open={open} onClose={closeModalHandler}>

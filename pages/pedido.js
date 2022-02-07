@@ -45,6 +45,7 @@ function Pedido(props) {
       shippingAddress,
       paymentMethod,
       deliveryMethod,
+      orderComment,
     },
   } = state;
   const itemsPrice = shoppingProducts.reduce(
@@ -77,6 +78,7 @@ function Pedido(props) {
         shippingAddress,
         paymentMethod,
         deliveryMethod,
+        orderComment,
         itemsPrice,
         shippingPrice,
         taxPrice,

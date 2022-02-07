@@ -63,7 +63,6 @@ export default function Informacion(props) {
   }, []);
 
   //FUNCTIONS
-
   const submitCarryOutHandler = ({ fullName, phoneNumber }) => {
     dispatch({
       type: 'SAVE_SHIPPING_ADDRESS',

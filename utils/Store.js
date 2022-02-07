@@ -17,6 +17,9 @@ const initialState = {
     deliveryMethod: Cookies.get('deliveryMethod')
       ? Cookies.get('deliveryMethod')
       : '',
+    orderComment: Cookies.get('orderComment')
+      ? JSON.parse(Cookies.get('orderComment'))
+      : '',
   },
   userInfo: Cookies.get('userInfo')
     ? JSON.parse(Cookies.get('userInfo'))
@@ -66,6 +69,11 @@ function reducer(state, action) {
         ...state,
         shopping: { ...state.shopping, deliveryMethod: action.payload },
       };
+    case 'SAVE_ORDER_COMMENT':
+      return {
+        ...state,
+        shopping: { ...state.shopping, orderComment: action.payload },
+      };
     case 'SHOPPING_CLEAR':
       return {
         ...state,
@@ -82,6 +90,7 @@ function reducer(state, action) {
           shippingAddress: '',
           paymentMethod: '',
           deliveryMethod: '',
+          orderComment: '',
         },
       };
 
