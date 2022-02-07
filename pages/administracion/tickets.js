@@ -128,7 +128,9 @@ function Ticket() {
                     </Typography>
                   </ListItem>
                   <ListItem>
-                    <Typography>{order.shippingAddress.fullName}</Typography>
+                    <Typography>
+                      <strong>{order.shippingAddress.fullName}</strong>
+                    </Typography>
                   </ListItem>
                   <ListItem>
                     <TableContainer>
@@ -172,27 +174,32 @@ function Ticket() {
                   {order.deliveryMethod === 'express' ? (
                     <Box>
                       <ListItem>
-                        <Typography>Método de entraga: Express</Typography>
+                        <Typography>
+                          <strong>Método de entraga:</strong> Express
+                        </Typography>
                       </ListItem>
                       <ListItem>
                         <Typography>
-                          Direccion: {order.shippingAddress.address}
+                          <strong>Direccion:</strong>{' '}
+                          {order.shippingAddress.address}
                         </Typography>
                       </ListItem>
                     </Box>
                   ) : (
                     <ListItem>
-                      <Typography>Método de entraga: Para llevar</Typography>
+                      <Typography>
+                        <strong>Método de entrega:</strong> Para llevar
+                      </Typography>
                     </ListItem>
                   )}
                   <ListItem>
                     <Typography>
-                      Método de pago: {order.paymentMethod}
+                      <strong>Método de pago:</strong> {order.paymentMethod}
                     </Typography>
                   </ListItem>
                   <ListItem>
                     <Typography>
-                      Comentario: {order.orderComment.comment}
+                      <strong>Comentario:</strong> {order.orderComment.comment}
                     </Typography>
                   </ListItem>
                   <ListItem>

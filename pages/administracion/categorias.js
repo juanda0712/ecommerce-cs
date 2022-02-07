@@ -169,6 +169,11 @@ function AdminCategories() {
                   <ListItemText primary="Zonas"></ListItemText>
                 </ListItem>
               </NextLink>
+              <NextLink href="/administracion/tickets" passHref>
+                <ListItem button component="a">
+                  <ListItemText primary="Tickets"></ListItemText>
+                </ListItem>
+              </NextLink>
             </List>
           </Card>
         </Grid>

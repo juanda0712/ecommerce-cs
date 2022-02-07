@@ -77,7 +77,7 @@ function AdminOrdenes() {
                   <ListItemText primary="Panel de Administracion"></ListItemText>
                 </ListItem>
               </NextLink>
-              <NextLink selected href="/administracion/ordenes" passHref>
+              <NextLink href="/administracion/ordenes" passHref>
                 <ListItem selected button component="a">
                   <ListItemText primary="Ordenes"></ListItemText>
                 </ListItem>
@@ -100,6 +100,11 @@ function AdminOrdenes() {
               <NextLink href="/administracion/zonas" passHref>
                 <ListItem button component="a">
                   <ListItemText primary="Zonas"></ListItemText>
+                </ListItem>
+              </NextLink>
+              <NextLink href="/administracion/tickets" passHref>
+                <ListItem button component="a">
+                  <ListItemText primary="Tickets"></ListItemText>
                 </ListItem>
               </NextLink>
             </List>
